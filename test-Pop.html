@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="jquery.js"></script>
+  <script src="test-pop.js"></script>
+  <link rel="stylesheet" href="test-pop.css">
+</head>
+<body style="min-height: 1000px">
+  <button id="show-pop">点击显示弹窗</button>
+  <script>
+    $(function(){
+      var win = new PopWin({
+        title : "请完整您的信息",
+        width : 600,
+        height : 500,
+        className : " ",
+        buttons : [
+          {
+            id : 'btn1',
+            btnText : "确定",
+            className:""
+          },
+          {
+            id : 'btn1',
+            btnText : "取消",
+            className:""
+          }
+        ]
+      })
+
+      //显示弹窗：事件为“show”
+      win.on('show',function(){
+        console.log('on show');
+        console.log(this);
+      })
+
+      //当隐藏弹窗：事件为“hide”
+      win.on('hide',function(){
+        console.log('on hide');
+        console.log(this);
+      })
+
+      //当关闭按钮按下：
+      win.on('close-btn-click',function(){
+        console.log('close-btn-click');
+        console.log(this)
+      })
+
+      //当底部按钮被按下：
+      win.on('action-btn-click','btn1',function(){
+        console.log('action-btn-click btn1');
+        console.log(this);
+        this.hide();
+      })
+      win.on('action-btn-click','btn2',function(){
+        console.log('action-btn-click btn2');
+        console.log(this);
+        this.hide();
+      })
+
+      var $html = $('<form><fieldset><legend>纯粹一个表单</legend><label>账号：</label><input type="text" placeholder="请输入您的账号"><label>密码：</label><input type="password" placeholder="请输入密码"></fieldset></form>')
+      win.setContent($html);
+      $('#show-pop').click(function(){
+        win.show();
+      })
+    })
+  </script>
+</body>
+</html>
