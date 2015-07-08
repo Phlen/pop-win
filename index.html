@@ -1,92 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>pop-win</title>
-	<link rel="stylesheet" href="pop-win.css">
+  <meta charset="UTF-8">
+  <title>pop-win</title>
+  <link rel="stylesheet" href="pop-win.css">
 </head>
 <body style="height: 1000px;">
-	<button id="show-pop">显示弹窗</button>
+<button id="show-pop">显示弹窗</button>
 
-	<script src="https://code.jquery.com/jquery-1.10.1.min.js" ></script>
-	<script src="test.js"></script>
-	<script>
-		$(function() {
-			var win = new PopWin({      //弹出框的整体,定义一个弹出框
-				title: "上传获奖名单",    //弹出框的题目
-				width: 600,             //弹出框的大小
-				height: 500,
-				className: '',          //弹出框的类名；由于自身带的js文件中，已经将其的类名设为：pop-win，故此处可以不加类名
-				buttons: [
-					{
-						id: "btn1",         //设置弹出框中，第一个按钮的id
-						btnText: "取消",    //第一个ID的值
-						className: "btn-custom"   //第一个ID的类名，可以不加，js文件已设置
-					},
-					{                       //第二个按钮
-						id: "btn2",
-						btnText: "确定",
-						className: "btn-custom"
-					},
-          {
-            id:"btn3",
-            btnText:"返回",
-            className:""
-          }
-				]
-			});
+<script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="test.js"></script>
+<script>
+  $(function () {
+    var win = new PopWin({      //弹出框的整体,定义一个弹出框
+      title: "上传获奖名单",    //弹出框的题目
+      width: 600,             //弹出框的大小
+      height: 500,
+      className: '',          //弹出框的类名；由于自身带的js文件中，已经将其的类名设为：pop-win，故此处可以不加类名
+      buttons: [
+        {
+          id: "btn1",         //设置弹出框中，第一个按钮的id
+          btnText: "取消",    //第一个ID的值
+          className: "btn-custom"   //第一个ID的类名，可以不加，js文件已设置
+        },
+        {                       //第二个按钮
+          id: "btn2",
+          btnText: "确定",
+          className: "btn-custom"
+        },
+        {
+          id: "btn3",
+          btnText: "返回",
+          className: ""
+        }
+      ]
+    });
 
-      /*弹出框的行为*/
+    /*弹出框的行为*/
 
-			// 当弹窗显示win.on第一个参数为show
-			win.on('show', function() {
-				console.log('on show');
-				// this是win的信息
-				console.log(this);    //将win的信息console出来
-			});
+    // 当弹窗显示win.on第一个参数为show
+    win.on('show', function () {
+      console.log('on show');
+      // this是win的信息
+      console.log(this);    //将win的信息console出来
+    });
 
-			// 当弹窗关闭
-			win.on('hide', function() {
-				console.log('on hide');
-				// this is win
-				console.log(this);
-			});
+    // 当弹窗关闭
+    win.on('hide', function () {
+      console.log('on hide');
+      // this is win
+      console.log(this);
+    });
 
-			// 关闭按钮点击
-			win.on('close-btn-click', function() {
-				console.log('close-btn-click');
-				console.log(this);
-			});
+    // 关闭按钮点击
+    win.on('close-btn-click', function () {
+      console.log('close-btn-click');
+      console.log(this);
+    });
 
-			// 动作按钮(底部按钮) 点击
-			win.on('action-btn-click', 'btn1', function() {
-				console.log('action-btn-click btn1');
-				console.log(this);
-				this.hide();
-			});
-			win.on('action-btn-click', 'btn2', function() {
-				console.log('action-btn-click btn2');
-				console.log(this);
-				this.hide();
-			});
-      win.on('action-btn-click', 'btn3', function() {
-        console.log('action-btn-click btn3');
-        console.log(this);
-        this.hide();
-      });
+    // 动作按钮(底部按钮) 点击
+    win.on('action-btn-click', 'btn1', function () {
+      console.log('action-btn-click btn1');
+      console.log(this);
+      this.hide();
+    });
+    win.on('action-btn-click', 'btn2', function () {
+      console.log('action-btn-click btn2');
+      console.log(this);
+      this.hide();
+    });
+    win.on('action-btn-click', 'btn3', function () {
+      console.log('action-btn-click btn3');
+      console.log(this);
+      this.hide();
+    });
 
-			// win.setHeight(800);
-			// win.setWidth(400);
+    // win.setHeight(800);
+    // win.setWidth(400);
 
-			// win.setContent('<a href="http://www.baidu.com" target="_blank" > content use html </a>');
-			var $html = $('<a href="http://www.baidu.com" target="_blank" > content use jquery object </a>');
-			win.setContent($html);
+    // win.setContent('<a href="http://www.baidu.com" target="_blank" > content use html </a>');
+    var $html = $('<a href="http://www.baidu.com" target="_blank" > content use jquery object </a>');
+    win.setContent($html);
 
-			$("#show-pop").click(function() {
-				win.show();
-			});
+    $("#show-pop").click(function () {
+      win.show();
+    });
 
-		});
-	</script>
+  });
+</script>
 </body>
 </html>

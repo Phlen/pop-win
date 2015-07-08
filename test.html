@@ -8,74 +8,74 @@
   <script src="pop-win.js"></script>
 </head>
 <body style="height: 1000px">
-  <button id="show-pop">显示弹框</button>
-  <script>
-    $(function(){
-      var win = new PopWin({
-        title:"Just for test",
-        height:600,
-        width:500,
-        className:'',
+<button id="show-pop">显示弹框</button>
+<script>
+  $(function () {
+    var win = new PopWin({
+      title: "Just for test",
+      height: 600,
+      width: 500,
+      className: '',
 
-        buttons:[
-          {
-            id:"btn1",
-            btnText:"取消",
-            className:""
-          },
-          {
-            id:"btn2",
-            btnText:"确定",
-            className:""
-          },
-          {
-            id:"btn3",
-            btnText:"返回",
-            className:""
-          }
-        ]
-      })
-
-      /*弹出框行为*/
-
-      win.on('show',function(){
-        console.log('on show');
-        console.log(this);
-      })
-      win.hide('hide',function(){
-        console.log('on hide');
-        console.log(this)
-      })
-
-      win.on('close-btn-click',function(){
-        console.log('弹框关闭');
-        console.log(this);
-      })
-      win.on('action-btn-click','btn1',function(){
-        console.log('取消按钮被按下');
-        console.log(this);
-        this.hide();   //win被hide
-      })
-      win.on('action-btn-click','btn2',function(){
-        console.log('确定按钮被按下');
-        console.log(this);
-        this.hide();   //win被hide
-      })
-      win.on('action-btn-click','btn3',function(){
-        console.log('返回按钮被按下');
-        console.log(this);
-        this.hide();   //win被hide
-      })
-
-      var $html = $(
-          '<a href="http://www.baidu.com" target="_blank">content use jquery object</a> '
-      );
-      win.setContent($html);
-
-      $('#show-pop').click(function(){
-        win.show();
-      })
+      buttons: [
+        {
+          id: "btn1",
+          btnText: "取消",
+          className: ""
+        },
+        {
+          id: "btn2",
+          btnText: "确定",
+          className: ""
+        },
+        {
+          id: "btn3",
+          btnText: "返回",
+          className: ""
+        }
+      ]
     })
-  </script>
+
+    /*弹出框行为*/
+
+    win.on('show', function () {
+      console.log('on show');
+      console.log(this);
+    })
+    win.hide('hide', function () {
+      console.log('on hide');
+      console.log(this)
+    })
+
+    win.on('close-btn-click', function () {
+      console.log('弹框关闭');
+      console.log(this);
+    })
+    win.on('action-btn-click', 'btn1', function () {
+      console.log('取消按钮被按下');
+      console.log(this);
+      this.hide();   //win被hide
+    })
+    win.on('action-btn-click', 'btn2', function () {
+      console.log('确定按钮被按下');
+      console.log(this);
+      this.hide();   //win被hide
+    })
+    win.on('action-btn-click', 'btn3', function () {
+      console.log('返回按钮被按下');
+      console.log(this);
+      this.hide();   //win被hide
+    })
+
+    var $html = $(
+        '<a href="http://www.baidu.com" target="_blank">content use jquery object</a> '
+    );
+    win.setContent($html);
+
+    $('#show-pop').click(function () {
+      win.show();
+    })
+  })
+</script>
 </body>
 </html>
